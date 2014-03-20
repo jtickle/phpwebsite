@@ -1,14 +1,15 @@
 %define name phpwebsite
 %define install_dir /var/www/phpwebsite
+%define version 1.9.0
 
 Summary:   phpWebSite Content Management System
 Name:      %{name}
 Version:   %{version}
-Release:   %{release}
+Release:   %{build}
 License:   GPL
 Group:     Development/PHP
 URL:       http://phpwebsite.appstate.edu
-Source:    %{name}-%{version}-%{release}.tar.bz2
+Source:    %{name}-%{build}.tar.bz2
 Requires:  php >= 5.0.0, php-gd >= 5.0.0
 Prefix:    /var/www/phpwebsite
 BuildArch: noarch
@@ -17,7 +18,7 @@ BuildArch: noarch
 The phpWebSite Content Management System
 
 %prep
-%setup -n %{name}-%{version}-%{release}
+%setup -n %{name}-%{build}
 
 %post
 /usr/bin/curl -L -k http://127.0.0.1/apc/clear
