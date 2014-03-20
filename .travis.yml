@@ -5,12 +5,10 @@ php:
   - 5.5
 #  - hhvm
 
-env:
-  - secure: "aRt7YZbnHZk25FwsV6WWRcA8/6i8PO/YI+S3Yrq/fgZzUC2M3YLIVOoq6/N02zgR01SoZ8iIZ3nM+EEXv+eH3lsHeYyVC4rnKuR0lTzRLKdSXHzXk2lEEzmt4sjaigQnoBDGP9gX4nAPlRB6AQmx6XlA3l4zzANJXcmew8qdIr0="
-
 before_script:
   - lsb_release -a
   - lscpu
+  - env
   - sudo apt-get install apache2 libapache2-mod-fastcgi
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - sudo a2enmod rewrite actions fastcgi alias
@@ -21,9 +19,8 @@ before_script:
   - sudo service apache2 restart
 
 script:
-  - echo $SUPERSECRET 
   - ".travis-build/phplint ."
   - "phpunit"
 
-notifications:
-  irc: "irc.freenode.org#phpwebsite"
+#notifications:
+#  irc: "irc.freenode.org#phpwebsite"
